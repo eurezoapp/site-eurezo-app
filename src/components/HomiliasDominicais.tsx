@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export const HomiliasDominicais: React.FC = () => {
   const [showVideo, setShowVideo] = useState(false);
-  const videoId = '6N_T9hqIhNk';
+  const videoId = 'XnWutU9o9h8';
 
   return (
     <div className="space-y-6">
