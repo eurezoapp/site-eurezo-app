@@ -1,6 +1,6 @@
 const CACHE_NAME = 'santo-terco-v1';
 const CACHE = "pwabuilder-page";
-const offlineFallbackPage = "offline.html"; // Substitua com o nome correto do seu arquivo offline
+const offlineFallbackPage = "offline.html"; 
 
 const urlsToCache = [
   '/',
@@ -64,6 +64,14 @@ workbox.routing.registerRoute(
 
 // Fallback offline quando o usuário estiver desconectado
 self.addEventListener('fetch', (event) => {
+    const url = new URL(event.request.url);
+
+    // Ignorar cache para a página "HomiliasDominicais"
+    if (url.pathname.includes('/components/HomiliasDominicais.tsx')) {
+        console.log('Ignorando o cache para:', url.pathname);
+        return;
+    }
+
     if (event.request.mode === 'navigate') {
         event.respondWith((async () => {
             try {
