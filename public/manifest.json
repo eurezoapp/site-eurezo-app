@@ -16,18 +16,18 @@
     "books & references"
   ],
   "screenshots": [
-  {
-    "src": "screenshot-desktop.png",
-    "sizes": "1280x720",
-    "type": "image/png",
-    "form_factor": "wide"
-  },
-  {
-    "src": "screenshot-mobile.png",
-    "sizes": "640x360",
-    "type": "image/png"
-  }
-]
+    {
+      "src": "screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "640x360",
+      "type": "image/png"
+    }
+  ],
   "icons": [
     {
       "src": "icon-192.png",
