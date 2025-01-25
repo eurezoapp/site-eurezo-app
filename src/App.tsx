@@ -20,11 +20,18 @@ import { Stats } from './pages/Stats';
 import { InstallButton } from './components/InstallButton';
 import { Donate } from './pages/Donate';
 import { FileUpload } from './pages/FileUpload';
+import { MealPrayers } from './components/MealPrayers';
+import { SalveRegina } from './components/SalveRegina';
+import { VeniSancte } from './components/VeniSancte';
+import { OfertaDiaria } from './components/OfertaDiaria';
+import { LegiaoMaria } from './components/LegiaoMaria';
+import { OficioImaculada } from './components/OficioImaculada';
+import { SaoBentoMedalha } from './components/SaoBentoMedalha';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
   const [selectedMystery, setSelectedMystery] = useState(mysteryGroups[0].mysteries);
-  const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias'>('none');
+  const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias' | 'mealprayers' | 'salveregina' | 'venisancte' | 'ofertadiaria' | 'legiaomaria' | 'oficioimaculada' | 'saobentobencao'>('none');
   const location = useLocation();
   
   useEffect(() => {
@@ -81,6 +88,20 @@ const App: React.FC = () => {
       setPrayerType('comunhao');
     } else if (value === 'Homilias Dominicais') {
       setPrayerType('homilias');
+    } else if (value === 'Oração antes das refeições') {
+      setPrayerType('mealprayers');
+    } else if (value === 'Salve Rainha') {
+      setPrayerType('salveregina');
+    } else if (value === 'Vinde Espírito Santo') {
+      setPrayerType('venisancte');
+    } else if (value === 'Oferecimento Diário') {
+      setPrayerType('ofertadiaria');
+    } else if (value === 'Legião de Maria') {
+      setPrayerType('legiaomaria');
+    } else if (value === 'Ofício da Imaculada') {
+      setPrayerType('oficioimaculada');
+    } else if (value === 'Bênção de São Bento') {
+      setPrayerType('saobentobencao');
     } else if (value === 'none') {
       setPrayerType('none');
     } else {
@@ -108,6 +129,20 @@ const App: React.FC = () => {
         return <ComunhaoEspiritual />;
       case 'homilias':
         return <HomiliasDominicais />;
+      case 'mealprayers':
+        return <MealPrayers />;
+      case 'salveregina':
+        return <SalveRegina />;
+      case 'venisancte':
+        return <VeniSancte />;
+      case 'ofertadiaria':
+        return <OfertaDiaria />;
+      case 'legiaomaria':
+        return <LegiaoMaria />;
+      case 'oficioimaculada':
+        return <OficioImaculada />;
+      case 'saobentobencao':
+        return <SaoBentoMedalha />;
       case 'rosary':
         return (
           <>
@@ -164,7 +199,21 @@ const App: React.FC = () => {
                                 ? 'Comunhão Espiritual'
                                 : prayerType === 'homilias'
                                   ? 'Homilias Dominicais'
-                                  : 'Selecione uma oração'
+                                  : prayerType === 'mealprayers'
+                                    ? 'Oração antes das refeições'
+                                    : prayerType === 'salveregina'
+                                      ? 'Salve Rainha'
+                                      : prayerType === 'venisancte'
+                                        ? 'Vinde Espírito Santo'
+                                        : prayerType === 'ofertadiaria'
+                                          ? 'Oferecimento Diário'
+                                          : prayerType === 'legiaomaria'
+                                            ? 'Legião de Maria'
+                                            : prayerType === 'oficioimaculada'
+                                              ? 'Ofício da Imaculada'
+                                              : prayerType === 'saobentobencao'
+                                                ? 'Bênção de São Bento'
+                                                : 'Selecione uma oração'
               }
               onSelect={handlePrayerTypeSelect}
               showAdditionalPrayers={true}
