@@ -31,7 +31,7 @@ import { ConsagracaoAparecida } from './components/ConsagracaoAparecida';
 import { AntifonasNossaSenhora } from './components/AntifonasNossaSenhora';
 import { UpdateNotification } from './components/UpdateNotification';
 
-const APP_VERSION = '1.0.3';
+const APP_VERSION = '1.0.4';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
