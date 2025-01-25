@@ -32,8 +32,7 @@ export const Donate: React.FC = () => {
             <div className="prose max-w-none mb-8">
               <p className="text-center mb-6">
                 Ficamos felizes por seu interesse em nos ajudar a manter o App EuRezo. 
-                Sou seminarista e me dedico também a fazer a internet um meio para fazer 
-                chegar o Evangelho, e ao povo de Deus favorecer meios para que eles possam rezar mais.
+               O Objetivo é fascilitar suas orações diárias, de forma rápida e dinâminca.
               </p>
 
               <div className="bg-gray-50 p-6 rounded-lg text-center">
