@@ -27,6 +27,9 @@ import { OfertaDiaria } from './components/OfertaDiaria';
 import { LegiaoMaria } from './components/LegiaoMaria';
 import { OficioImaculada } from './components/OficioImaculada';
 import { SaoBentoMedalha } from './components/SaoBentoMedalha';
+import { UpdateNotification } from './components/UpdateNotification';
+
+const APP_VERSION = '1.0.0';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
@@ -240,6 +243,7 @@ const App: React.FC = () => {
           <Footer />
         </div>
       </footer>
+      <UpdateNotification currentVersion={APP_VERSION} />
     </div>
   );
 
