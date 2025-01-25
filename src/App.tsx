@@ -28,14 +28,15 @@ import { LegiaoMaria } from './components/LegiaoMaria';
 import { OficioImaculada } from './components/OficioImaculada';
 import { SaoBentoMedalha } from './components/SaoBentoMedalha';
 import { ConsagracaoAparecida } from './components/ConsagracaoAparecida';
+import { AntifonasNossaSenhora } from './components/AntifonasNossaSenhora';
 import { UpdateNotification } from './components/UpdateNotification';
 
-const APP_VERSION = '1.0.1';
+const APP_VERSION = '1.0.3';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
   const [selectedMystery, setSelectedMystery] = useState(mysteryGroups[0].mysteries);
-  const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias' | 'mealprayers' | 'salveregina' | 'venisancte' | 'ofertadiaria' | 'legiaomaria' | 'oficioimaculada' | 'saobentomedalha' | 'consagracaoaparecida'>('none');
+  const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias' | 'mealprayers' | 'salveregina' | 'venisancte' | 'ofertadiaria' | 'legiaomaria' | 'oficioimaculada' | 'saobentomedalha' | 'consagracaoaparecida' | 'antifonas'>('none');
   const location = useLocation();
   
   useEffect(() => {
@@ -108,6 +109,8 @@ const App: React.FC = () => {
       setPrayerType('oficioimaculada');
     } else if (value === 'Bênção de São Bento') {
       setPrayerType('saobentomedalha');
+    } else if (value === 'Antífonas de Nossa Senhora') {
+      setPrayerType('antifonas');
     } else if (value === 'none') {
       setPrayerType('none');
     } else {
@@ -126,7 +129,7 @@ const App: React.FC = () => {
       case 'consagracao':
         return <ConsagracaoPrayer />;
       case 'consagracaoaparecida':
-        return <ConsagracaoAparecida />;
+        return <ConsagracaoAparecida fontSize={fontSize} />;
       case 'confession':
         return <WhenToConfess />;
       case 'commandments':
@@ -148,9 +151,11 @@ const App: React.FC = () => {
       case 'legiaomaria':
         return <LegiaoMaria />;
       case 'oficioimaculada':
-        return <OficioImaculada />;
+        return <OficioImaculada fontSize={fontSize} />;
       case 'saobentomedalha':
-        return <SaoBentoMedalha />;
+        return <SaoBentoMedalha fontSize={fontSize} />;
+      case 'antifonas':
+        return <AntifonasNossaSenhora fontSize={fontSize} />;
       case 'rosary':
         return (
           <>
@@ -177,7 +182,7 @@ const App: React.FC = () => {
           {/* Welcome Message */}
           <div className="text-center mb-4">
             <h2 className="text-2xl font-bold mb-4" style={{ color: '#503d2e' }}>
-              Seja bem-vindo(a), Deus abençoe seu dia!
+              Seja bem-vindo(a) ao App de orações cotidianas
             </h2>
             <p className="text-gray-600">
               Selecione a oração que deseja rezar.
@@ -223,7 +228,9 @@ const App: React.FC = () => {
                                                 ? 'Ofício da Imaculada'
                                                 : prayerType === 'saobentomedalha'
                                                   ? 'Bênção de São Bento'
-                                                  : 'Selecione uma oração'
+                                                  : prayerType === 'antifonas'
+                                                    ? 'Antífonas de Nossa Senhora'
+                                                    : 'Selecione uma oração'
               }
               onSelect={handlePrayerTypeSelect}
               showAdditionalPrayers={true}
