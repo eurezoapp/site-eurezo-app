@@ -66,6 +66,12 @@ workbox.routing.registerRoute(
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
 
+    // Nunca cachear o arquivo version.json para sempre ter a versão mais recente
+    if (url.pathname.endsWith('version.json')) {
+        event.respondWith(fetch(event.request));
+        return;
+    }
+
     // Ignorar cache para a página "HomiliasDominicais"
     if (url.pathname.includes('/components/HomiliasDominicais.tsx')) {
         console.log('Ignorando o cache para:', url.pathname);
@@ -101,6 +107,13 @@ self.addEventListener('fetch', (event) => {
                 return fetch(event.request);
             })
         );
+    }
+});
+
+// Evento de mensagem para atualização
+self.addEventListener('message', (event) => {
+    if (event.data === 'skipWaiting') {
+        self.skipWaiting();
     }
 });
 
