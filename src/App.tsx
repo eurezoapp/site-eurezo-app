@@ -177,7 +177,7 @@ const App: React.FC = () => {
           {/* Welcome Message */}
           <div className="text-center mb-4">
             <h2 className="text-2xl font-bold mb-4" style={{ color: '#503d2e' }}>
-              Seja bem-vindo(a) ao App de orações cotidianas
+              Seja bem-vindo(a), Deus abençoe seu dia!
             </h2>
             <p className="text-gray-600">
               Selecione a oração que deseja rezar.
