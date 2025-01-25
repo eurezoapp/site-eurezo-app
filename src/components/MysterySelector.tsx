@@ -14,6 +14,24 @@ export const MysterySelector: React.FC<MysterySelectorProps> = ({
   onSelect,
   showAdditionalPrayers = false,
 }) => {
+  const additionalPrayers = [
+    'Terço da Misericórdia',
+    'Ângelus',
+    'Consagração a Nossa Senhora',
+    'Quando Confessar',
+    'Os 10 Mandamentos',
+    'Alma de Cristo',
+    'Comunhão Espiritual',
+    'Homilias Dominicais',
+    'Oração antes das refeições',
+    'Salve Rainha',
+    'Vinde Espírito Santo',
+    'Oferecimento Diário',
+    'Legião de Maria',
+    'Ofício da Imaculada',
+    'Bênção de São Bento'
+  ];
+
   return (
     <select
       className="w-full px-4 py-2 border rounded-md bg-[#eac948] text-[#503d2e] font-medium"
@@ -28,14 +46,11 @@ export const MysterySelector: React.FC<MysterySelectorProps> = ({
       ))}
       {showAdditionalPrayers && (
         <>
-          <option value="Homilias Dominicais">Homilias Dominicais</option>
-          <option value="Terço da Misericórdia">Terço da Misericórdia</option>
-          <option value="Ângelus">Ângelus</option>
-          <option value="Consagração a Nossa Senhora">Consagração à Nossa Senhora</option>
-          <option value="Alma de Cristo">Alma de Cristo</option>
-          <option value="Comunhão Espiritual">Comunhão Espiritual</option>
-          <option value="Quando Confessar">Quando Confessar</option>
-          <option value="Os 10 Mandamentos">Os 10 Mandamentos</option>
+          {additionalPrayers.map(prayer => (
+            <option key={prayer} value={prayer}>
+              {prayer}
+            </option>
+          ))}
         </>
       )}
     </select>
