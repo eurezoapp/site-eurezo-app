@@ -1,9 +1,17 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.3",
   "lastUpdate": "2025-01-25",
+  "forceUpdate": true,
+  "updateMessage": "Nova oração disponível: Antífonas de Nossa Senhora em português e latim",
   "newPrayers": [
     "Medalha de São Bento",
     "Ofício da Imaculada",
-    "Consagração a Nossa Senhora Aparecida"
+    "Consagração a Nossa Senhora Aparecida",
+    "Antífonas de Nossa Senhora"
+  ],
+  "changes": [
+    "Adicionada Antífonas de Nossa Senhora em português e latim",
+    "Correção no ajuste de fonte em todas as orações",
+    "Melhorias na interface do usuário"
   ]
 }
