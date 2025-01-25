@@ -19,6 +19,7 @@ export const MysterySelector: React.FC<MysterySelectorProps> = ({
     'Ângelus',
     'Consagração a Nossa Senhora',
     'Consagração a N. S. Aparecida',
+    'Antífonas de Nossa Senhora',
     'Quando Confessar',
     'Os 10 Mandamentos',
     'Alma de Cristo',
