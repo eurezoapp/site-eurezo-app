@@ -27,14 +27,15 @@ import { OfertaDiaria } from './components/OfertaDiaria';
 import { LegiaoMaria } from './components/LegiaoMaria';
 import { OficioImaculada } from './components/OficioImaculada';
 import { SaoBentoMedalha } from './components/SaoBentoMedalha';
+import { ConsagracaoAparecida } from './components/ConsagracaoAparecida';
 import { UpdateNotification } from './components/UpdateNotification';
 
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.0.1';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
   const [selectedMystery, setSelectedMystery] = useState(mysteryGroups[0].mysteries);
-  const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias' | 'mealprayers' | 'salveregina' | 'venisancte' | 'ofertadiaria' | 'legiaomaria' | 'oficioimaculada' | 'saobentobencao'>('none');
+  const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias' | 'mealprayers' | 'salveregina' | 'venisancte' | 'ofertadiaria' | 'legiaomaria' | 'oficioimaculada' | 'saobentomedalha' | 'consagracaoaparecida'>('none');
   const location = useLocation();
   
   useEffect(() => {
@@ -81,6 +82,8 @@ const App: React.FC = () => {
       setPrayerType('angelus');
     } else if (value === 'Consagração a Nossa Senhora') {
       setPrayerType('consagracao');
+    } else if (value === 'Consagração a N. S. Aparecida') {
+      setPrayerType('consagracaoaparecida');
     } else if (value === 'Quando Confessar') {
       setPrayerType('confession');
     } else if (value === 'Os 10 Mandamentos') {
@@ -104,7 +107,7 @@ const App: React.FC = () => {
     } else if (value === 'Ofício da Imaculada') {
       setPrayerType('oficioimaculada');
     } else if (value === 'Bênção de São Bento') {
-      setPrayerType('saobentobencao');
+      setPrayerType('saobentomedalha');
     } else if (value === 'none') {
       setPrayerType('none');
     } else {
@@ -122,6 +125,8 @@ const App: React.FC = () => {
         return <AngelusPrayers />;
       case 'consagracao':
         return <ConsagracaoPrayer />;
+      case 'consagracaoaparecida':
+        return <ConsagracaoAparecida />;
       case 'confession':
         return <WhenToConfess />;
       case 'commandments':
@@ -144,7 +149,7 @@ const App: React.FC = () => {
         return <LegiaoMaria />;
       case 'oficioimaculada':
         return <OficioImaculada />;
-      case 'saobentobencao':
+      case 'saobentomedalha':
         return <SaoBentoMedalha />;
       case 'rosary':
         return (
@@ -196,27 +201,29 @@ const App: React.FC = () => {
                           ? 'Os 10 Mandamentos'
                           : prayerType === 'consagracao'
                             ? 'Consagração a Nossa Senhora'
-                            : prayerType === 'almacristo'
-                              ? 'Alma de Cristo'
-                              : prayerType === 'comunhao'
-                                ? 'Comunhão Espiritual'
-                                : prayerType === 'homilias'
-                                  ? 'Homilias Dominicais'
-                                  : prayerType === 'mealprayers'
-                                    ? 'Oração antes das refeições'
-                                    : prayerType === 'salveregina'
-                                      ? 'Salve Rainha'
-                                      : prayerType === 'venisancte'
-                                        ? 'Vinde Espírito Santo'
-                                        : prayerType === 'ofertadiaria'
-                                          ? 'Oferecimento Diário'
-                                          : prayerType === 'legiaomaria'
-                                            ? 'Legião de Maria'
-                                            : prayerType === 'oficioimaculada'
-                                              ? 'Ofício da Imaculada'
-                                              : prayerType === 'saobentobencao'
-                                                ? 'Bênção de São Bento'
-                                                : 'Selecione uma oração'
+                            : prayerType === 'consagracaoaparecida'
+                              ? 'Consagração a N. S. Aparecida'
+                              : prayerType === 'almacristo'
+                                ? 'Alma de Cristo'
+                                : prayerType === 'comunhao'
+                                  ? 'Comunhão Espiritual'
+                                  : prayerType === 'homilias'
+                                    ? 'Homilias Dominicais'
+                                    : prayerType === 'mealprayers'
+                                      ? 'Oração antes das refeições'
+                                      : prayerType === 'salveregina'
+                                        ? 'Salve Rainha'
+                                        : prayerType === 'venisancte'
+                                          ? 'Vinde Espírito Santo'
+                                          : prayerType === 'ofertadiaria'
+                                            ? 'Oferecimento Diário'
+                                            : prayerType === 'legiaomaria'
+                                              ? 'Legião de Maria'
+                                              : prayerType === 'oficioimaculada'
+                                                ? 'Ofício da Imaculada'
+                                                : prayerType === 'saobentomedalha'
+                                                  ? 'Bênção de São Bento'
+                                                  : 'Selecione uma oração'
               }
               onSelect={handlePrayerTypeSelect}
               showAdditionalPrayers={true}
