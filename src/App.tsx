@@ -34,14 +34,25 @@ import { SeteDoresMaria } from './components/SeteDoresMaria';
 import { SaoMiguelPrayer } from './components/SaoMiguelPrayer';
 import { AtoContricao } from './components/AtoContricao';
 
-const APP_VERSION = '1.0.9';
+const APP_VERSION = '1.0.8';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
   const [selectedMystery, setSelectedMystery] = useState(mysteryGroups[0].mysteries);
   const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias' | 'mealprayers' | 'salveregina' | 'venisancte' | 'ofertadiaria' | 'legiaomaria' | 'oficioimaculada' | 'saobentomedalha' | 'consagracaoaparecida' | 'antifonas' | 'setedores' | 'saomiguel' | 'atocontricao'>('none');
   const location = useLocation();
-  
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) {
+      return 'Seja bem-vindo(a), Deus abençoe seu dia!';
+    } else if (hour >= 12 && hour < 18) {
+      return 'Seja bem-vindo(a), Deus abençoe sua tarde!';
+    } else {
+      return 'Seja bem-vindo(a), Tenha uma noite abençoada!';
+    }
+  };
+
   useEffect(() => {
     // Increment visit count
     const visits = parseInt(localStorage.getItem('totalVisits') || '0') + 1;
@@ -197,7 +208,7 @@ const App: React.FC = () => {
           {/* Welcome Message */}
           <div className="text-center mb-4">
             <h2 className="text-2xl font-bold mb-4" style={{ color: '#503d2e' }}>
-              Seja bem-vindo(a), Deus abençoe seu dia!
+              {getGreeting()}
             </h2>
             <p className="text-gray-600">
               Selecione a oração que deseja rezar.
