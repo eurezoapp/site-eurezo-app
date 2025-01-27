@@ -32,13 +32,14 @@ import { AntifonasNossaSenhora } from './components/AntifonasNossaSenhora';
 import { UpdateNotification } from './components/UpdateNotification';
 import { SeteDoresMaria } from './components/SeteDoresMaria';
 import { SaoMiguelPrayer } from './components/SaoMiguelPrayer';
+import { AtoContricao } from './components/AtoContricao';
 
 const APP_VERSION = '1.0.7';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
   const [selectedMystery, setSelectedMystery] = useState(mysteryGroups[0].mysteries);
-  const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias' | 'mealprayers' | 'salveregina' | 'venisancte' | 'ofertadiaria' | 'legiaomaria' | 'oficioimaculada' | 'saobentomedalha' | 'consagracaoaparecida' | 'antifonas' | 'setedores' | 'saomiguel'>('none');
+  const [prayerType, setPrayerType] = useState<'none' | 'rosary' | 'mercy' | 'angelus' | 'consagracao' | 'confession' | 'commandments' | 'almacristo' | 'comunhao' | 'homilias' | 'mealprayers' | 'salveregina' | 'venisancte' | 'ofertadiaria' | 'legiaomaria' | 'oficioimaculada' | 'saobentomedalha' | 'consagracaoaparecida' | 'antifonas' | 'setedores' | 'saomiguel' | 'atocontricao'>('none');
   const location = useLocation();
   
   useEffect(() => {
@@ -117,6 +118,8 @@ const App: React.FC = () => {
       setPrayerType('setedores');
     } else if (value === 'Oração a São Miguel Arcanjo') {
       setPrayerType('saomiguel');
+    } else if (value === 'Ato de Contrição') {
+      setPrayerType('atocontricao');
     } else if (value === 'none') {
       setPrayerType('none');
     } else {
@@ -174,6 +177,8 @@ const App: React.FC = () => {
         return <SeteDoresMaria fontSize={fontSize} />;
       case 'saomiguel':
         return <SaoMiguelPrayer fontSize={fontSize} />;
+      case 'atocontricao':
+        return <AtoContricao fontSize={fontSize} />;
       default:
         return null;
     }
@@ -244,7 +249,9 @@ const App: React.FC = () => {
                                                       ? 'As 7 Dores de Maria'
                                                       : prayerType === 'saomiguel'
                                                         ? 'Oração a São Miguel Arcanjo'
-                                                        : 'Selecione uma oração'
+                                                        : prayerType === 'atocontricao'
+                                                          ? 'Ato de Contrição'
+                                                          : 'Selecione uma oração'
               }
               onSelect={handlePrayerTypeSelect}
               showAdditionalPrayers={true}
