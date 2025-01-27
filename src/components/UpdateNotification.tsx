@@ -7,6 +7,7 @@ interface UpdateNotificationProps {
 export const UpdateNotification: React.FC<UpdateNotificationProps> = ({ currentVersion }) => {
   const [showNotification, setShowNotification] = useState(false);
   const [newVersion, setNewVersion] = useState('');
+  const [updateMessage, setUpdateMessage] = useState('');
 
   useEffect(() => {
     // Verifica a versão a cada 1 hora
@@ -17,6 +18,7 @@ export const UpdateNotification: React.FC<UpdateNotificationProps> = ({ currentV
         
         if (data.version !== currentVersion) {
           setNewVersion(data.version);
+          setUpdateMessage(data.updateMessage || 'Nova versão disponível!');
           setShowNotification(true);
         }
       } catch (error) {
@@ -30,44 +32,50 @@ export const UpdateNotification: React.FC<UpdateNotificationProps> = ({ currentV
     return () => clearInterval(interval);
   }, [currentVersion]);
 
-  const handleUpdate = () => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.ready.then(registration => {
-        // Força a atualização do service worker
-        registration.update().then(() => {
-          // Armazena a nova versão
-          localStorage.setItem('appVersion', newVersion);
-          
-          // Recarrega a página para aplicar as atualizações
-          window.location.reload();
-        });
-      });
+  const handleUpdate = async () => {
+    try {
+      // Primeiro, limpa o cache
+      if ('caches' in window) {
+        const cacheNames = await caches.keys();
+        await Promise.all(
+          cacheNames.map(cacheName => caches.delete(cacheName))
+        );
+      }
+
+      // Atualiza o service worker
+      if ('serviceWorker' in navigator) {
+        const registration = await navigator.serviceWorker.ready;
+        await registration.update();
+      }
+
+      // Armazena a nova versão
+      localStorage.setItem('appVersion', newVersion);
+      
+      // Recarrega a página para aplicar as atualizações
+      window.location.reload();
+    } catch (error) {
+      console.error('Erro durante a atualização:', error);
+      // Se houver erro, apenas recarrega a página
+      window.location.reload();
     }
+    
     setShowNotification(false);
   };
 
   if (!showNotification) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 bg-[#503d2e] text-white p-4 rounded-lg shadow-lg z-50 max-w-sm">
-      <div className="flex flex-col gap-2">
-        <p className="font-medium">Novas orações disponíveis!</p>
-        <p className="text-sm">Atualize o aplicativo para acessar as novas orações.</p>
-        <div className="flex justify-end gap-2 mt-2">
-          <button
-            onClick={() => setShowNotification(false)}
-            className="px-3 py-1 text-sm rounded-md hover:bg-[#614b3c] transition-colors"
-          >
-            Depois
-          </button>
-          <button
-            onClick={handleUpdate}
-            className="px-3 py-1 text-sm bg-[#e5d6ac] text-[#503d2e] rounded-md hover:bg-[#d4c59b] transition-colors font-medium"
-          >
-            Atualizar agora
-          </button>
-        </div>
+    <div className="fixed bottom-0 left-0 right-0 bg-[#503d2e] text-white p-4 flex justify-between items-center">
+      <div>
+        <p className="font-bold">Atualização disponível!</p>
+        <p className="text-sm">{updateMessage}</p>
       </div>
+      <button
+        onClick={handleUpdate}
+        className="bg-[#e5d6ac] text-[#503d2e] px-4 py-2 rounded-md hover:bg-[#d4c59b] transition-colors"
+      >
+        Atualizar agora
+      </button>
     </div>
   );
 };
