@@ -53,6 +53,19 @@ export const MysterySelector: React.FC<MysterySelectorProps> = ({
               {prayer}
             </option>
           ))}
+          <option value="Consagração a Nossa Senhora">Consagração a Nossa Senhora</option>
+          <option value="Consagração a N. S. Aparecida">Consagração a N. Sra. Aparecida</option>
+          <option value="Alma de Cristo">Alma de Cristo</option>
+          <option value="Comunhão Espiritual">Comunhão Espiritual</option>
+          <option value="Salve Rainha">Salve Rainha</option>
+          <option value="Vinde Espírito Santo">Vinde Espírito Santo</option>
+          <option value="Oferecimento Diário">Oferecimento Diário</option>
+          <option value="Legião de Maria">Legião de Maria</option>
+          <option value="Ofício da Imaculada">Ofício da Imaculada</option>
+          <option value="Bênção de São Bento">Bênção de São Bento</option>
+          <option value="Antífonas de Nossa Senhora">Antífonas de Nossa Senhora</option>
+          <option value="As 7 Dores de Maria">As 7 Dores de Maria</option>
+          <option value="Oração a São Miguel Arcanjo">Oração a São Miguel Arcanjo</option>
         </>
       )}
     </select>
