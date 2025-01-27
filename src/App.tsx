@@ -34,7 +34,7 @@ import { SeteDoresMaria } from './components/SeteDoresMaria';
 import { SaoMiguelPrayer } from './components/SaoMiguelPrayer';
 import { AtoContricao } from './components/AtoContricao';
 
-const APP_VERSION = '1.0.7';
+const APP_VERSION = '1.0.8';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
