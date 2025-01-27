@@ -1,15 +1,16 @@
 {
-  "version": "1.0.7",
+  "version": "1.0.8",
   "lastUpdate": "2025-01-26",
   "forceUpdate": true,
-  "updateMessage": "Novas orações disponíveis: As 7 Dores de Maria e Oração a São Miguel Arcanjo em português e latim",
+  "updateMessage": "Nova oração disponível: Ato de Contrição com 10 versões diferentes",
   "newPrayers": [
     "Medalha de São Bento",
     "Ofício da Imaculada",
     "Consagração a Nossa Senhora Aparecida",
     "Antífonas de Nossa Senhora",
     "As 7 Dores de Maria",
-    "Oração a São Miguel Arcanjo"
+    "Oração a São Miguel Arcanjo",
+    "Ato de Contrição"
   ],
   "changes": [
     "Adicionada Antífonas de Nossa Senhora em português e latim",
