@@ -149,3 +149,28 @@ export const whenToConfess = {
     }
   ]
 };
+
+export const saoMiguelPrayer = {
+  portuguese: {
+    title: "ORAÇÃO A SÃO MIGUEL ARCANJO",
+    subtitle: "Composta pelo Papa Leão XIII no dia 13 de outubro de 1884",
+    prayer: `São Miguel Arcanjo, defendei-nos no combate,
+sede nosso refúgio contra a maldade e as ciladas do demônio!
+Ordene-lhe Deus, instantemente o pedimos,
+e vós príncipe da milícia celeste, pelo Divino Poder,
+precipitai no inferno a Satanás e a todos os espíritos malignos,
+que andam pelo mundo para perder as almas.
+Amém.`
+  },
+  latin: {
+    title: "ORATIO AD SANCTUM MICHAELEM",
+    prayer: `Sancte Michael Archangele, defende nos in proelio,
+contra nequitiam et insidias diaboli esto praesidium.
+Imperet illi Deus, supplices deprecamur:
+tuque, Princeps militiae caelestis,
+Satanam aliosque spiritus malignos,
+qui ad perditionem animarum pervagantur in mundo,
+divina virtute, in infernum detrude.
+Amen.`
+  }
+};
