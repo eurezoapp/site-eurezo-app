@@ -65,6 +65,7 @@ export const MysterySelector: React.FC<MysterySelectorProps> = ({
           <option value="Bênção de São Bento">Bênção de São Bento</option>
           <option value="Antífonas de Nossa Senhora">Antífonas de Nossa Senhora</option>
           <option value="As 7 Dores de Maria">As 7 Dores de Maria</option>
+          <option value="Ato de Contrição">Ato de Contrição</option>
           <option value="Oração a São Miguel Arcanjo">Oração a São Miguel Arcanjo</option>
         </>
       )}
