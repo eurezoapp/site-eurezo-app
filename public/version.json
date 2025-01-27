@@ -1,13 +1,15 @@
 {
-  "version": "1.0.5",
-  "lastUpdate": "2025-01-25",
+  "version": "1.0.7",
+  "lastUpdate": "2025-01-26",
   "forceUpdate": true,
-  "updateMessage": "Nova oração disponível: Antífonas de Nossa Senhora em português e latim",
+  "updateMessage": "Novas orações disponíveis: As 7 Dores de Maria e Oração a São Miguel Arcanjo em português e latim",
   "newPrayers": [
     "Medalha de São Bento",
     "Ofício da Imaculada",
     "Consagração a Nossa Senhora Aparecida",
-    "Antífonas de Nossa Senhora"
+    "Antífonas de Nossa Senhora",
+    "As 7 Dores de Maria",
+    "Oração a São Miguel Arcanjo"
   ],
   "changes": [
     "Adicionada Antífonas de Nossa Senhora em português e latim",
