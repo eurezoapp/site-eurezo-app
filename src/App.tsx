@@ -35,7 +35,7 @@ import { SaoMiguelPrayer } from './components/SaoMiguelPrayer';
 import { AtoContricao } from './components/AtoContricao';
 import SocialShare from './components/SocialShare';
 
-const APP_VERSION = '1.1.3';
+const APP_VERSION = '1.1.4';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
