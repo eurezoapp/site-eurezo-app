@@ -33,8 +33,9 @@ import { UpdateNotification } from './components/UpdateNotification';
 import { SeteDoresMaria } from './components/SeteDoresMaria';
 import { SaoMiguelPrayer } from './components/SaoMiguelPrayer';
 import { AtoContricao } from './components/AtoContricao';
+import SocialShare from './components/SocialShare';
 
-const APP_VERSION = '1.1.0';
+const APP_VERSION = '1.1.2';
 
 const App: React.FC = () => {
   const [fontSize, setFontSize] = useState(16);
@@ -274,11 +275,9 @@ const App: React.FC = () => {
           {/* Prayer Content */}
           {renderPrayer()}
 
-          {/* Ad Space */}
-          <div className="mt-8 p-4 bg-gray-100 rounded-lg text-center">
-            <div id="ad-space" className="min-h-[100px] flex items-center justify-center">
-              <p className="text-gray-500">Anuncie Aqui!</p>
-            </div>
+          {/* Social Share */}
+          <div className="mb-4">
+            <SocialShare />
           </div>
         </div>
       </main>
@@ -305,7 +304,7 @@ const App: React.FC = () => {
       <Route path="/stats" element={<Stats />} />
       <Route path="/donate" element={<Donate />} />
       <Route path="/upload" element={<FileUpload />} />
-      <Route path="/setedores" element={<SeteDoresMaria />} />
+      <Route path="/atocontricao" element={<AtoContricao fontSize={fontSize} />} />
     </Routes>
   );
 };
